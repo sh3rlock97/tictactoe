@@ -10,3 +10,4 @@ A = Paint Selected Field
 
 
 Download newest Version:
+[click here](https://github.com/sh3rlock97/tictactoe/raw/master/tictactoe.zip)
