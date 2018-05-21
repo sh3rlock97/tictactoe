@@ -30,11 +30,14 @@ include $(DEVKITPRO)/libnx/switch_rules
 #     - <libnx folder>/default_icon.jpg
 #---------------------------------------------------------------------------------
 TARGET		:=	$(notdir $(CURDIR))
+APP_TITLE	:=	TicTacToeNX
 BUILD		:=	build
 SOURCES		:=	source
 DATA		:=	data
 INCLUDES	:=	include
+APP_VERSION	:=	2.0
 EXEFS_SRC	:=	exefs_src
+APP_AUTHOR	:=	Marino
 
 #---------------------------------------------------------------------------------
 # options for code generation

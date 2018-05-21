@@ -68,32 +68,32 @@ int main(int argc, char **argv)
             } else focused -= 6;
         }
         else if (kDown & KEY_DLEFT) {
-            if(focused-3 >= 0) {
+            if(focused >= 3) {
                 focused -= 3;
-            } else focused += 6;
+            } else focused = 6 + focused%3;
         }
         else if (kDown & KEY_DUP)  {
             if(focused%3 > 0)
             focused--;
             else focused += 2;
         }
-        else if (kDown & KEY_JOYCON_DOWN) {
-            memset(points, 0, sizeof points);
-        }
         else if (kDown & KEY_JOYCON_RIGHT) { // Pressed A
-            if(points[focused] == 0) { // Set field if field isn't set yet
+            if(win) { // if game's ended, A-Button restarts the game
+                main(argc, argv);
+                return 0; 
+            }
+            else if(points[focused] == 0) { // Set field if field isn't set yet
                 points[focused] = player;
                 player %= 2;
                 player += 1;
             }
-            if(win) { // if game's ended, A-Button restarts the game
-                memset(points, 0, sizeof points);
-                win = 0;
-                player = 1;
-                focused = 4;
-            }
         }
-        if(focused > 8 || focused < 0) focused = 4;
+
+        if (kDown & KEY_MINUS) {
+            main(argc, argv);
+            return 0; 
+        }
+        if(focused > 8 || focused < 0) focused = 0;
 
         u32 width, height;
         u32 pos;
